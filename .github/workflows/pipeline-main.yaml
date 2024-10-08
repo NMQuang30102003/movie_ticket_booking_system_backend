@@ -3,12 +3,12 @@ name: Movie Ticket Backend Pipeline
 on:
   push:
     branches:
-      - minhquang
+      - main
     paths:
       - .github/workflows/*-backend.yaml
   pull-request:
     branches:
-      - minhquang
+      - main
 jobs:
   compile:
     runs-on: ubuntu:latest
