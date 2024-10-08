@@ -27,7 +27,6 @@ jobs:
   unit-test:
     runs-on: ubuntu-latest
     name: Running Unit Test
-    needs: compile
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -44,7 +43,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     name: Build Backend
-    needs: unit-test
+    needs: [compile, unit-tests]
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
