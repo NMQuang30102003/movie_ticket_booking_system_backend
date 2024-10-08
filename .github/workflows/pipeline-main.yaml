@@ -6,9 +6,6 @@ on:
       - main
     paths:
       - .github/workflows/*-backend.yaml
-  pull-request:
-    branches:
-      - main
 jobs:
   compile:
     runs-on: ubuntu:latest
