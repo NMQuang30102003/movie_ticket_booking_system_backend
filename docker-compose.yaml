@@ -1,23 +1,24 @@
-
 services:
   server:
+    container_name: movie_booking_api
     build:
       context: .
       target: development
     ports:
-      - 8081:8080
+      - 8080:8080
       - 8000:8000
     depends_on:
       db:
         condition: service_healthy
-    environment:
-      - MYSQL_URL=jdbc:mysql://db:3306/movie_ticket_booking
+    networks:
+      - movie_booking
     develop:
       watch:
         - action: rebuild
           path: .
   db:
-    image: mysql
+    container_name: mysql_db
+    image: minhquang3010/movie_booking_database:1.1
     restart: always
     volumes:
       - mysql-db-data:/var/lib/mysql
@@ -28,10 +29,17 @@ services:
       - MYSQL_PASSWORD=movie_ticket_booking
     ports:
       - 3309:3306
+    networks:
+      - movie_booking
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "movie_ticket_booking", "--password=movie_ticket_booking"]
       interval: 10s
       timeout: 5s
       retries: 5
+
+networks:
+  movie_booking:
+    driver: bridge
 volumes:
   mysql-db-data:
+    driver: local

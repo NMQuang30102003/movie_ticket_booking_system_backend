@@ -43,6 +43,8 @@ COPY --from=extract build/target/extracted/dependencies/ ./
 COPY --from=extract build/target/extracted/spring-boot-loader/ ./
 COPY --from=extract build/target/extracted/snapshot-dependencies/ ./
 COPY --from=extract build/target/extracted/application/ ./
-EXPOSE 8080
 
+ENV MYSQL_URL=jdbc:mysql://mysql_db:3306/movie_ticket_booking
+
+EXPOSE 8080
 ENTRYPOINT [ "java", "-Dspring.profiles.active=mysql", "org.springframework.boot.loader.launch.JarLauncher" ]

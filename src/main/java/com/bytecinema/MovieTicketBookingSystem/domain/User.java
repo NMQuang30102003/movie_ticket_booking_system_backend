@@ -34,6 +34,7 @@ public class User {
     private String email;
     private String password;
     private String name;
+    @Column(name="gender")
     private GenderEnum gender;
     private String phoneNumber;
     private String avatar;
