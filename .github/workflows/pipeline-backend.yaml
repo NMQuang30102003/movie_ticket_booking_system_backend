@@ -98,8 +98,8 @@ jobs:
           push: true
           platforms: linux/amd64
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/movie_booking_api:1.0.0
-            ${{ secrets.DOCKERHUB_USERNAME }}/movie_booking_api:latest
+            minhquang3010/movie_booking_api:1.0.0
+            minhquang3010/movie_booking_api:latest
           build-args: |
             PROFILE=dev
             APP_VERSION=1.0.0
