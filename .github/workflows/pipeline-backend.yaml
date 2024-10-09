@@ -69,7 +69,7 @@ jobs:
           java-version: '17'
           distribution: 'corretto'
       - name: Run Unit Test
-        run: mvn clean package
+        run: mvn clean compile
 
   build-image:
     name: Build Docker image
