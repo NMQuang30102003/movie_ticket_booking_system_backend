@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main
-
-
 jobs:
   compile:
     runs-on: ubuntu-latest
@@ -26,21 +24,21 @@ jobs:
   unit-test:
     runs-on: ubuntu-latest
     name: Running Unit Test
-#    services:
-#      mysql_db:
-#        image: mysql:latest
-#        env:
-#          MYSQL_ROOT_PASSWORD: admin123
-#          MYSQL_DATABASE: movie_ticket_booking
-#          MYSQL_USER: movie_ticket_booking
-#          MYSQL_PASSWORD: movie_ticket_booking
-#        ports:
-#          - 3306:3306
-#        options: >-
-#          --health-cmd="mysqladmin ping --silent"
-#          --health-interval=5s
-#          --health-timeout=3s
-#          --health-retries=5
+    services:
+      db:
+        image: minhquang3010/movie_booking_database:1.0
+        env:
+          MYSQL_ROOT_PASSWORD: admin123
+          MYSQL_DATABASE: movie_ticket_booking
+          MYSQL_USER: movie_ticket_booking
+          MYSQL_PASSWORD: movie_ticket_booking
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping --silent"
+          --health-interval=5s
+          --health-timeout=3s
+          --health-retries=5
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -52,7 +50,7 @@ jobs:
           java-version: '17'
           distribution: 'corretto'
       - name: Run Unit Test
-        run: mvn clean compile
+        run: mvn clean test
 
   build:
     runs-on: ubuntu-latest
