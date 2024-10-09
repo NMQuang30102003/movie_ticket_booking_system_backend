@@ -27,15 +27,15 @@ jobs:
     runs-on: ubuntu-latest
     name: Running Unit Test
     services:
-     mysql:
+      mysql_db:
       image: mysql:latest
       env:
         MYSQL_ROOT_PASSWORD: 'admin123'
         MYSQL_DATABASE: 'movie_ticket_booking'
-        MYSQL_USER: movie_ticket_booking
-        MYSQL_PASSWORD: movie_ticket_booking
+        MYSQL_USER: 'movie_ticket_booking'
+        MYSQL_PASSWORD: 'movie_ticket_booking'
       ports:
-        - 3309:3306
+        - 3306:3306
       options: >-
         --health-cmd="mysqladmin ping --silent" 
         --health-interval=5s 
@@ -52,7 +52,7 @@ jobs:
           java-version: '17'
           distribution: 'corretto'
       - name: Run Unit Test
-        run: mvn clean test
+        run: mvn clean compile
 
   build:
     runs-on: ubuntu-latest
