@@ -30,10 +30,10 @@ jobs:
       mysql_db:
       image: mysql:latest
       env:
-        MYSQL_ROOT_PASSWORD: 'admin123'
-        MYSQL_DATABASE: 'movie_ticket_booking'
-        MYSQL_USER: 'movie_ticket_booking'
-        MYSQL_PASSWORD: 'movie_ticket_booking'
+        MYSQL_ROOT_PASSWORD: admin123
+        MYSQL_DATABASE: movie_ticket_booking
+        MYSQL_USER: movie_ticket_booking
+        MYSQL_PASSWORD: movie_ticket_booking
       ports:
         - 3306:3306
       options: >-
