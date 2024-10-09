@@ -27,7 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Running Unit Test
     services:
-    mysql:
+     mysql:
       image: mysql:latest
       env:
         MYSQL_ROOT_PASSWORD: 'root'
