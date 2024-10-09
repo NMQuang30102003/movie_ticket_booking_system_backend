@@ -28,10 +28,10 @@ jobs:
     name: Running Unit Test
     services:
     mysql:
-      image: mysql:5.7
+      image: 'mysql:5.7'
       env:
-        MYSQL_ROOT_PASSWORD: root
-        MYSQL_DATABASE: admin123
+        MYSQL_ROOT_PASSWORD: 'root'
+        MYSQL_DATABASE: 'admin123'
       ports:
         - 3309:3306
       options: >-
