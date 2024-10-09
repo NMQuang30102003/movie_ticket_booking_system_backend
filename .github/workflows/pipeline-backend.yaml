@@ -49,6 +49,13 @@ jobs:
         with:
           java-version: '17'
           distribution: 'corretto'
+      - name: Wait for MySQL to be ready
+        run: |
+          # Chờ MySQL service khởi động hoàn tất
+          while ! mysqladmin ping -h "127.0.0.1" --silent; do
+            echo "Waiting for MySQL..."
+            sleep 5
+          done
       - name: Run Unit Test
         run: mvn clean test
 
